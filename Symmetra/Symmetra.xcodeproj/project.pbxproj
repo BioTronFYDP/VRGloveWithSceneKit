@@ -1,0 +1,579 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AA45F4301DE1CE9300CA8E51 /* GameViewControllerForHand1.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA45F42F1DE1CE9300CA8E51 /* GameViewControllerForHand1.swift */; };
+		AA7329B91DE18A7B0024616D /* NSColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7329B81DE18A7B0024616D /* NSColor+Extensions.swift */; };
+		AA7329BB1DE18D880024616D /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7329BA1DE18D880024616D /* Random.swift */; };
+		AAAEA8F51DE108DF00FE8DD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAEA8F41DE108DF00FE8DD7 /* AppDelegate.swift */; };
+		AAAEA8F71DE108DF00FE8DD7 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAEA8F61DE108DF00FE8DD7 /* GameView.swift */; };
+		AAAEA8F91DE108DF00FE8DD7 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAEA8F81DE108DF00FE8DD7 /* GameViewController.swift */; };
+		AAAEA8FB1DE108DF00FE8DD7 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = AAAEA8FA1DE108DF00FE8DD7 /* art.scnassets */; };
+		AAAEA8FD1DE108DF00FE8DD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAAEA8FC1DE108DF00FE8DD7 /* Assets.xcassets */; };
+		AAAEA9001DE108DF00FE8DD7 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAAEA8FE1DE108DF00FE8DD7 /* MainMenu.xib */; };
+		AAAEA90B1DE108DF00FE8DD7 /* SymmetraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAEA90A1DE108DF00FE8DD7 /* SymmetraTests.swift */; };
+		AAAEA9161DE108DF00FE8DD7 /* SymmetraUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAEA9151DE108DF00FE8DD7 /* SymmetraUITests.swift */; };
+		AAAEA9241DE11CF700FE8DD7 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAEA9231DE11CF700FE8DD7 /* String+Extensions.swift */; };
+		AAAEA9651DE176A100FE8DD7 /* tronGrid.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AAAEA9641DE176A100FE8DD7 /* tronGrid.jpg */; };
+		AAAEA9671DE1789A00FE8DD7 /* woodTile1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AAAEA9661DE1789A00FE8DD7 /* woodTile1.jpg */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AAAEA9071DE108DF00FE8DD7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AAAEA8E91DE108DE00FE8DD7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AAAEA8F01DE108DE00FE8DD7;
+			remoteInfo = Symmetra;
+		};
+		AAAEA9121DE108DF00FE8DD7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AAAEA8E91DE108DE00FE8DD7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AAAEA8F01DE108DE00FE8DD7;
+			remoteInfo = Symmetra;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AA45F42F1DE1CE9300CA8E51 /* GameViewControllerForHand1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewControllerForHand1.swift; sourceTree = "<group>"; };
+		AA7329B81DE18A7B0024616D /* NSColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSColor+Extensions.swift"; sourceTree = "<group>"; };
+		AA7329BA1DE18D880024616D /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
+		AAAEA8F11DE108DF00FE8DD7 /* Symmetra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Symmetra.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAAEA8F41DE108DF00FE8DD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AAAEA8F61DE108DF00FE8DD7 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		AAAEA8F81DE108DF00FE8DD7 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		AAAEA8FA1DE108DF00FE8DD7 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
+		AAAEA8FC1DE108DF00FE8DD7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AAAEA8FF1DE108DF00FE8DD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		AAAEA9011DE108DF00FE8DD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AAAEA9061DE108DF00FE8DD7 /* SymmetraTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SymmetraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAAEA90A1DE108DF00FE8DD7 /* SymmetraTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymmetraTests.swift; sourceTree = "<group>"; };
+		AAAEA90C1DE108DF00FE8DD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AAAEA9111DE108DF00FE8DD7 /* SymmetraUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SymmetraUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAAEA9151DE108DF00FE8DD7 /* SymmetraUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymmetraUITests.swift; sourceTree = "<group>"; };
+		AAAEA9171DE108DF00FE8DD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AAAEA9231DE11CF700FE8DD7 /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		AAAEA9641DE176A100FE8DD7 /* tronGrid.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tronGrid.jpg; sourceTree = "<group>"; };
+		AAAEA9661DE1789A00FE8DD7 /* woodTile1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = woodTile1.jpg; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AAAEA8EE1DE108DE00FE8DD7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAAEA9031DE108DF00FE8DD7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAAEA90E1DE108DF00FE8DD7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AAAEA8E81DE108DE00FE8DD7 = {
+			isa = PBXGroup;
+			children = (
+				AAAEA8F31DE108DF00FE8DD7 /* Symmetra */,
+				AAAEA9091DE108DF00FE8DD7 /* SymmetraTests */,
+				AAAEA9141DE108DF00FE8DD7 /* SymmetraUITests */,
+				AAAEA8F21DE108DF00FE8DD7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AAAEA8F21DE108DF00FE8DD7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AAAEA8F11DE108DF00FE8DD7 /* Symmetra.app */,
+				AAAEA9061DE108DF00FE8DD7 /* SymmetraTests.xctest */,
+				AAAEA9111DE108DF00FE8DD7 /* SymmetraUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AAAEA8F31DE108DF00FE8DD7 /* Symmetra */ = {
+			isa = PBXGroup;
+			children = (
+				AAAEA9251DE11CFB00FE8DD7 /* Helpers */,
+				AAAEA8F41DE108DF00FE8DD7 /* AppDelegate.swift */,
+				AAAEA8F61DE108DF00FE8DD7 /* GameView.swift */,
+				AAAEA8F81DE108DF00FE8DD7 /* GameViewController.swift */,
+				AA45F42F1DE1CE9300CA8E51 /* GameViewControllerForHand1.swift */,
+				AAAEA8FA1DE108DF00FE8DD7 /* art.scnassets */,
+				AAAEA8FC1DE108DF00FE8DD7 /* Assets.xcassets */,
+				AAAEA9631DE1760C00FE8DD7 /* Images */,
+				AAAEA8FE1DE108DF00FE8DD7 /* MainMenu.xib */,
+				AAAEA9011DE108DF00FE8DD7 /* Info.plist */,
+			);
+			path = Symmetra;
+			sourceTree = "<group>";
+		};
+		AAAEA9091DE108DF00FE8DD7 /* SymmetraTests */ = {
+			isa = PBXGroup;
+			children = (
+				AAAEA90A1DE108DF00FE8DD7 /* SymmetraTests.swift */,
+				AAAEA90C1DE108DF00FE8DD7 /* Info.plist */,
+			);
+			path = SymmetraTests;
+			sourceTree = "<group>";
+		};
+		AAAEA9141DE108DF00FE8DD7 /* SymmetraUITests */ = {
+			isa = PBXGroup;
+			children = (
+				AAAEA9151DE108DF00FE8DD7 /* SymmetraUITests.swift */,
+				AAAEA9171DE108DF00FE8DD7 /* Info.plist */,
+			);
+			path = SymmetraUITests;
+			sourceTree = "<group>";
+		};
+		AAAEA9251DE11CFB00FE8DD7 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				AAAEA9231DE11CF700FE8DD7 /* String+Extensions.swift */,
+				AA7329B81DE18A7B0024616D /* NSColor+Extensions.swift */,
+				AA7329BA1DE18D880024616D /* Random.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		AAAEA9631DE1760C00FE8DD7 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				AAAEA9661DE1789A00FE8DD7 /* woodTile1.jpg */,
+				AAAEA9641DE176A100FE8DD7 /* tronGrid.jpg */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AAAEA8F01DE108DE00FE8DD7 /* Symmetra */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AAAEA91A1DE108DF00FE8DD7 /* Build configuration list for PBXNativeTarget "Symmetra" */;
+			buildPhases = (
+				AAAEA8ED1DE108DE00FE8DD7 /* Sources */,
+				AAAEA8EE1DE108DE00FE8DD7 /* Frameworks */,
+				AAAEA8EF1DE108DE00FE8DD7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Symmetra;
+			productName = Symmetra;
+			productReference = AAAEA8F11DE108DF00FE8DD7 /* Symmetra.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AAAEA9051DE108DF00FE8DD7 /* SymmetraTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AAAEA91D1DE108DF00FE8DD7 /* Build configuration list for PBXNativeTarget "SymmetraTests" */;
+			buildPhases = (
+				AAAEA9021DE108DF00FE8DD7 /* Sources */,
+				AAAEA9031DE108DF00FE8DD7 /* Frameworks */,
+				AAAEA9041DE108DF00FE8DD7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AAAEA9081DE108DF00FE8DD7 /* PBXTargetDependency */,
+			);
+			name = SymmetraTests;
+			productName = SymmetraTests;
+			productReference = AAAEA9061DE108DF00FE8DD7 /* SymmetraTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AAAEA9101DE108DF00FE8DD7 /* SymmetraUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AAAEA9201DE108DF00FE8DD7 /* Build configuration list for PBXNativeTarget "SymmetraUITests" */;
+			buildPhases = (
+				AAAEA90D1DE108DF00FE8DD7 /* Sources */,
+				AAAEA90E1DE108DF00FE8DD7 /* Frameworks */,
+				AAAEA90F1DE108DF00FE8DD7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AAAEA9131DE108DF00FE8DD7 /* PBXTargetDependency */,
+			);
+			name = SymmetraUITests;
+			productName = SymmetraUITests;
+			productReference = AAAEA9111DE108DF00FE8DD7 /* SymmetraUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AAAEA8E91DE108DE00FE8DD7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0810;
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = Technochimera;
+				TargetAttributes = {
+					AAAEA8F01DE108DE00FE8DD7 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 52GHE2Q332;
+						ProvisioningStyle = Automatic;
+					};
+					AAAEA9051DE108DF00FE8DD7 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 52GHE2Q332;
+						ProvisioningStyle = Automatic;
+						TestTargetID = AAAEA8F01DE108DE00FE8DD7;
+					};
+					AAAEA9101DE108DF00FE8DD7 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 52GHE2Q332;
+						ProvisioningStyle = Automatic;
+						TestTargetID = AAAEA8F01DE108DE00FE8DD7;
+					};
+				};
+			};
+			buildConfigurationList = AAAEA8EC1DE108DE00FE8DD7 /* Build configuration list for PBXProject "Symmetra" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AAAEA8E81DE108DE00FE8DD7;
+			productRefGroup = AAAEA8F21DE108DF00FE8DD7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AAAEA8F01DE108DE00FE8DD7 /* Symmetra */,
+				AAAEA9051DE108DF00FE8DD7 /* SymmetraTests */,
+				AAAEA9101DE108DF00FE8DD7 /* SymmetraUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AAAEA8EF1DE108DE00FE8DD7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAAEA9651DE176A100FE8DD7 /* tronGrid.jpg in Resources */,
+				AAAEA8FD1DE108DF00FE8DD7 /* Assets.xcassets in Resources */,
+				AAAEA8FB1DE108DF00FE8DD7 /* art.scnassets in Resources */,
+				AAAEA9671DE1789A00FE8DD7 /* woodTile1.jpg in Resources */,
+				AAAEA9001DE108DF00FE8DD7 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAAEA9041DE108DF00FE8DD7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAAEA90F1DE108DF00FE8DD7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AAAEA8ED1DE108DE00FE8DD7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAAEA9241DE11CF700FE8DD7 /* String+Extensions.swift in Sources */,
+				AAAEA8F71DE108DF00FE8DD7 /* GameView.swift in Sources */,
+				AA7329BB1DE18D880024616D /* Random.swift in Sources */,
+				AA7329B91DE18A7B0024616D /* NSColor+Extensions.swift in Sources */,
+				AA45F4301DE1CE9300CA8E51 /* GameViewControllerForHand1.swift in Sources */,
+				AAAEA8F91DE108DF00FE8DD7 /* GameViewController.swift in Sources */,
+				AAAEA8F51DE108DF00FE8DD7 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAAEA9021DE108DF00FE8DD7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAAEA90B1DE108DF00FE8DD7 /* SymmetraTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAAEA90D1DE108DF00FE8DD7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAAEA9161DE108DF00FE8DD7 /* SymmetraUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AAAEA9081DE108DF00FE8DD7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AAAEA8F01DE108DE00FE8DD7 /* Symmetra */;
+			targetProxy = AAAEA9071DE108DF00FE8DD7 /* PBXContainerItemProxy */;
+		};
+		AAAEA9131DE108DF00FE8DD7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AAAEA8F01DE108DE00FE8DD7 /* Symmetra */;
+			targetProxy = AAAEA9121DE108DF00FE8DD7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AAAEA8FE1DE108DF00FE8DD7 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AAAEA8FF1DE108DF00FE8DD7 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AAAEA9181DE108DF00FE8DD7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AAAEA9191DE108DF00FE8DD7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+			};
+			name = Release;
+		};
+		AAAEA91B1DE108DF00FE8DD7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 52GHE2Q332;
+				INFOPLIST_FILE = Symmetra/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.technochimera.Symmetra;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		AAAEA91C1DE108DF00FE8DD7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 52GHE2Q332;
+				INFOPLIST_FILE = Symmetra/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.technochimera.Symmetra;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		AAAEA91E1DE108DF00FE8DD7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 52GHE2Q332;
+				INFOPLIST_FILE = SymmetraTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.technochimera.SymmetraTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Symmetra.app/Contents/MacOS/Symmetra";
+			};
+			name = Debug;
+		};
+		AAAEA91F1DE108DF00FE8DD7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 52GHE2Q332;
+				INFOPLIST_FILE = SymmetraTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.technochimera.SymmetraTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Symmetra.app/Contents/MacOS/Symmetra";
+			};
+			name = Release;
+		};
+		AAAEA9211DE108DF00FE8DD7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 52GHE2Q332;
+				INFOPLIST_FILE = SymmetraUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.technochimera.SymmetraUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Symmetra;
+			};
+			name = Debug;
+		};
+		AAAEA9221DE108DF00FE8DD7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 52GHE2Q332;
+				INFOPLIST_FILE = SymmetraUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.technochimera.SymmetraUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Symmetra;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AAAEA8EC1DE108DE00FE8DD7 /* Build configuration list for PBXProject "Symmetra" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAAEA9181DE108DF00FE8DD7 /* Debug */,
+				AAAEA9191DE108DF00FE8DD7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AAAEA91A1DE108DF00FE8DD7 /* Build configuration list for PBXNativeTarget "Symmetra" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAAEA91B1DE108DF00FE8DD7 /* Debug */,
+				AAAEA91C1DE108DF00FE8DD7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AAAEA91D1DE108DF00FE8DD7 /* Build configuration list for PBXNativeTarget "SymmetraTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAAEA91E1DE108DF00FE8DD7 /* Debug */,
+				AAAEA91F1DE108DF00FE8DD7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AAAEA9201DE108DF00FE8DD7 /* Build configuration list for PBXNativeTarget "SymmetraUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAAEA9211DE108DF00FE8DD7 /* Debug */,
+				AAAEA9221DE108DF00FE8DD7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AAAEA8E91DE108DE00FE8DD7 /* Project object */;
+}
