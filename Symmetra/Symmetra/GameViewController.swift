@@ -177,24 +177,21 @@ class GameViewController: NSViewController, SCNPhysicsContactDelegate {
                 var currBone = bone
                 allBones.append(currBone)
                 while currBone.childNodes.count > 0 {
-                    currBone = currBone.childNodes[0]
+                    
+                    if currBone.childNodes[0].name!.contains("Bone") {
+                        currBone = currBone.childNodes[0]
+                    } else if currBone.childNodes.count >= 2 {
+                        currBone = currBone.childNodes[1]
+                    } else {
+                        break
+                    }
+                    
                     allBones.append(currBone)
                 }
             }
             
             initializeBones(bones: allBones)
         }
-        
-        
-        let planeGeom = SCNPlane(width: 0.3, height: 0.5)
-        let planeNode = SCNNode(geometry: planeGeom)
-        planeNode.eulerAngles = SCNVector3Make(0, 1.5, 0)
-        planeNode.position = SCNVector3Make(0, 0, 1.4)
-        planeNode.physicsBody = SCNPhysicsBody.kinematic()
-        let blackMaterial = SCNMaterial()
-        blackMaterial.diffuse.contents = NSColor.black
-        planeNode.geometry?.firstMaterial = blackMaterial
-        _structuredBones[0][1].addChildNode(planeNode)
         
         return handNode
     }
@@ -206,6 +203,9 @@ class GameViewController: NSViewController, SCNPhysicsContactDelegate {
         for bone in bones {
             
             guard let boneName = bone.name else {
+                continue
+            }
+            guard boneName != "plant" else {
                 continue
             }
             
@@ -222,7 +222,14 @@ class GameViewController: NSViewController, SCNPhysicsContactDelegate {
                 _originalEulers[fingerIndex-1].append(currentBone.eulerAngles)
                 
                 while currentBone.childNodes.count > 0 {
-                    currentBone = currentBone.childNodes[0]
+                    if currentBone.childNodes[0].name!.contains("Bone") {
+                        currentBone = currentBone.childNodes[0]
+                    } else if currentBone.childNodes.count >= 2 {
+                        currentBone = currentBone.childNodes[1]
+                    } else {
+                        break
+                    }
+                    
                     _structuredBones[fingerIndex-1].append(currentBone)
                     _originalEulers[fingerIndex-1].append(currentBone.eulerAngles)
                 }
@@ -278,7 +285,7 @@ class GameViewController: NSViewController, SCNPhysicsContactDelegate {
         let parentLightBall = ballScene.rootNode.childNodes[0]
         parentLightBall.geometry?.firstMaterial?.diffuse.contents = NSColor.black
         
-        for _ in 0 ..< 10 {
+        for _ in 0 ..< 100 {
             let lightBall = parentLightBall.flattenedClone()
             let massRand = Random.randCGFloat(from: 0.3, to: 5)
             let scaleRand = Random.randCGFloat(from: 0.4, to: 1)
