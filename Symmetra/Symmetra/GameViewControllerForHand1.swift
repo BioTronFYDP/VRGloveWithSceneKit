@@ -292,7 +292,7 @@ class GameViewControllerForHand1: NSViewController, SCNPhysicsContactDelegate {
         _handNode.runAction(flipForever)
         
         
-        tempTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(GameViewController.timersUp), userInfo: nil, repeats: true)
+        tempTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(GameViewControllerForHand1.timersUp), userInfo: nil, repeats: true)
         
     }
     

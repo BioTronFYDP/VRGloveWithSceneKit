@@ -17,11 +17,28 @@ class GameViewController: NSViewController, SCNPhysicsContactDelegate {
     
     private var scene = SCNScene()
     private var _handNode: SCNNode = SCNNode()
+    private let kDefaultHandPosition = SCNVector3Make(0, 8, 0)
+    private let kDefaultHandOrientation = SCNVector3Make(-2.3, 0, CGFloat(M_PI/2))
     
     private var _rawBones: [SCNNode] = []
     private var _structuredBones: [[SCNNode]] = Array(repeating: [], count: 5)
     private var _originalEulers: [[SCNVector3]] = Array(repeating: [], count: 5)
     
+    private var _soccerBall: SCNNode = {
+        let soccerBallScene = SCNScene(named: "art.scnassets/soccer.dae")!
+        let soccerBall = soccerBallScene.rootNode.childNodes[1]
+        soccerBall.physicsBody = SCNPhysicsBody.static()
+        soccerBall.physicsBody?.friction = 1
+        soccerBall.physicsBody?.damping = 0.5
+        soccerBall.physicsBody?.restitution = 0
+        soccerBall.physicsBody?.rollingFriction = 1
+        return soccerBall
+    }()
+    
+    private var _soccerBallScale: CGFloat = 0.001
+    private let kSoccerGrowIncrement: CGFloat = 0.05
+    private let kSoccerGrowDuration: CGFloat = 2
+    var _soccerTimer: Timer!
     
     var tempTimer: Timer!
     
@@ -38,7 +55,7 @@ class GameViewController: NSViewController, SCNPhysicsContactDelegate {
         scene.rootNode.addChildNode(cameraNode)
         
         // place the camera
-        cameraNode.position = SCNVector3(x: 0, y: 12, z: 8)
+        cameraNode.position = SCNVector3(x: 0, y: 14, z: 10)
         cameraNode.eulerAngles = SCNVector3Make(-CGFloat(M_PI/8.0), 0, 0)
         
         // create and add a light to the scene
@@ -61,27 +78,13 @@ class GameViewController: NSViewController, SCNPhysicsContactDelegate {
         _handNode = getHandNode()
         //  rotateHandIndefinitely()
         scene.rootNode.addChildNode(_handNode)
-        _handNode.position = SCNVector3Make(0, 6, 0)
+        _handNode.position = kDefaultHandPosition
         // (yaw, pitch, roll)
-        _handNode.eulerAngles = SCNVector3Make(-2.3, 0, CGFloat(M_PI/2))
+        _handNode.eulerAngles = kDefaultHandOrientation
         
         executeHandAnimations()
 
-        
-        // Add lightball
-        addLightBalls()
-        
-        //and orange
-        let orangeScene = SCNScene(named: "art.scnassets/banana.dae")!
-        let orange = orangeScene.rootNode.childNodes[0]
-        orange.scale = SCNVector3Make(0.3,0.3,0.3)
-        orange.physicsBody = SCNPhysicsBody.dynamic()
-        orange.physicsBody?.friction = 1
-        orange.physicsBody?.damping = 0.5
-        orange.position = SCNVector3Make(0, 7.3, -1.8)
-        orange.physicsBody?.restitution = 0
-        orange.physicsBody?.rollingFriction = 1
-        scene.rootNode.addChildNode(orange)
+
         
 
         let dragonScene = SCNScene(named: "art.scnassets/dragon.dae")!
@@ -280,12 +283,33 @@ class GameViewController: NSViewController, SCNPhysicsContactDelegate {
         return false
     }
     
-    func addLightBalls() {
+    
+    func generateSoccerBall() {
+        _soccerBall.position = SCNVector3Make(_handNode.position.x, _handNode.position.y+2, _handNode.position.z-2)
+        scene.rootNode.addChildNode(_soccerBall)
+    }
+    
+    // Grow the ball from hand from nothing. Set physics mode to kinematic
+    func conjureSoccerBallFromHand(duration: TimeInterval, completion: (() -> Void)?) {
+        
+        _soccerBall.position = SCNVector3Make(_handNode.position.x, _handNode.position.y+2, _handNode.position.z-2)
+        scene.rootNode.addChildNode(_soccerBall)
+        
+        _soccerBall.scale = SCNVector3Make(0.001, 0.001, 0.001)
+        
+        let growAction = SCNAction.scale(to: 1.0, duration: duration)
+        
+        _soccerBall.runAction(growAction) {
+            completion?()
+        }
+    }
+    
+    func dropLightBalls() {
         let ballScene = SCNScene(named: "art.scnassets/lightBall.dae")!
         let parentLightBall = ballScene.rootNode.childNodes[0]
         parentLightBall.geometry?.firstMaterial?.diffuse.contents = NSColor.black
         
-        for _ in 0 ..< 100 {
+        for _ in 0 ..< 30 {
             let lightBall = parentLightBall.flattenedClone()
             let massRand = Random.randCGFloat(from: 0.3, to: 5)
             let scaleRand = Random.randCGFloat(from: 0.4, to: 1)
@@ -312,16 +336,76 @@ class GameViewController: NSViewController, SCNPhysicsContactDelegate {
     
     func executeHandAnimations() {
         let instaFlip = SCNAction.rotateBy(x: 0, y: 0, z: -CGFloat(M_PI), duration: 0)
+        let quickFlip = SCNAction.rotateBy(x: 0, y: 0, z: -CGFloat(M_PI), duration: 1.5)
+        
         let flipHand = SCNAction.rotateBy(x: 0, y: 0, z: -CGFloat(M_PI), duration: 8)
         let flipForever = SCNAction.repeatForever(flipHand)
-        _handNode.runAction(instaFlip)
-
+        let wait2 = SCNAction.wait(duration: 2)
+//        let waitSequence = SCNAction.sequence([instaFlip, wait2, flipForever])
+        let mainSequence = SCNAction.sequence([quickFlip])
         
-        tempTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(GameViewController.timersUp), userInfo: nil, repeats: true)
+        
+        /////////////////////////////////////
+        //rotate x is actually -y axis, y is x axis, z is z
+        let slapBallRotate = SCNAction.rotateBy(x: -pi/8, y: -pi/4, z: 0, duration: 0.5)
+        let slapBallUp = SCNAction.moveBy(x: -0.5, y: 4, z: 0, duration: 0.5)
+        
+        let slapActionsFwd = SCNAction.group([slapBallRotate, slapBallUp])
+        let slapActionsBwd = SCNAction.group([slapBallRotate.reversed(), slapBallUp.reversed()])
+        
+        let slapSequence = SCNAction.sequence([slapActionsFwd, slapActionsBwd, wait2])
+        
+        naturalRestingHand(duration: 0, completion: nil)
+        _handNode.runAction(mainSequence) {
+            self.graspHand(duration: 1.5) {
+                self.generateSoccerBall()
+                self._soccerBall.scale = SCNVector3Make(0.001, 0.001, 0.001)
+    
+                self._soccerTimer = Timer.scheduledTimer(timeInterval: Double(self.kSoccerGrowDuration) * Double(self.kSoccerGrowIncrement), target: self, selector: #selector(self.growSoccerIncrementally), userInfo: nil, repeats: true)
+                
+                self.resetHandPosture(duration: 2, completion: {
+                    
+                    self.naturalRestingHand(duration: 0.5, completion: {
+                        self._soccerBall.physicsBody = SCNPhysicsBody.dynamic()
+                        
+                        self._handNode.runAction(slapSequence, completionHandler: {
+                            
+                            // Pretend to drop the ball
+                            let moveHandUpABit = SCNAction.moveBy(x: -0.2, y: 2, z: 0.3, duration: 0.8)
+                            let quickFlipOpp = SCNAction.rotateBy(x: 0, y: 0, z: CGFloat(M_PI), duration: 0.8)
+                            
+                            let moveHandUpABitRotate = SCNAction.group([moveHandUpABit, quickFlipOpp])
+                            
+                            let moveHandDown = SCNAction.moveBy(x: 0.2, y: -6, z: -0.3, duration: 0.5)
+                            let returnHand = SCNAction.move(to: self.kDefaultHandPosition, duration: 2)
+                            let dropBallSequence = SCNAction.sequence([moveHandUpABitRotate, moveHandDown])
+                            
+                            self._handNode.runAction(dropBallSequence, completionHandler: {
+                                self.dropLightBalls()
+                                self._handNode.runAction(returnHand) {
+                                    
+                                    // Lastly, run continuous Open&Close hand
+                                    self._handNode.runAction(quickFlip) {
+                                        DispatchQueue.main.async {
+                                            self.openCloseHand()
+                                            self.tempTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.openCloseHand), userInfo: nil, repeats: true)
+                                        }
+                                    }
+                                }
+                            })
+                        })
+                    })
+                    
+                })
+            }
+            
+        }
+        
+        
         
     }
     
-    func closeHand(duration: Double, completion: (() -> Void)?) {
+    func graspHand(duration: Double, completion: (() -> Void)?) {
         // ThisIsRight (yaw, roll, pitch)
         let xRotate = SCNAction.rotateBy(x: pi/2, y: 0, z: 0, duration: duration)
         let xNegRotate = SCNAction.rotateBy(x: -pi/2, y: 0, z: 0, duration: duration)
@@ -335,10 +419,34 @@ class GameViewController: NSViewController, SCNPhysicsContactDelegate {
         
         for bone in _rawBones {
             if !isHandBone(boneName: bone.name!) && !isThumb(boneName: bone.name!) {
-                bone.runAction(zRotate, completionHandler: completion)
+                bone.runAction(zRotate, completionHandler: nil)
             }
         }
         
+        let deadlineTime = DispatchTime.now() + duration
+        DispatchQueue.main.asyncAfter(deadline: deadlineTime) {
+            completion?()
+        }
+    }
+    
+    func naturalRestingHand(duration: Double, completion: (() -> Void)?) {
+        // ThisIsRight (yaw, roll, pitch)
+        let xRotate = SCNAction.rotateBy(x: 0.2, y: 0, z: 0, duration: duration)
+        let zRotate = SCNAction.rotateBy(x: 0, y: 0, z: 0.2, duration: duration)
+        
+        _structuredBones[0][1].runAction(xRotate)
+        _structuredBones[0][2].runAction(xRotate)
+        
+        for bone in _rawBones {
+            if !isHandBone(boneName: bone.name!) && !isThumb(boneName: bone.name!) {
+                bone.runAction(zRotate, completionHandler: nil)
+            }
+        }
+        
+        let deadlineTime = DispatchTime.now() + duration
+        DispatchQueue.main.asyncAfter(deadline: deadlineTime) {
+            completion?()
+        }
     }
     
     
@@ -363,8 +471,21 @@ class GameViewController: NSViewController, SCNPhysicsContactDelegate {
         SCNTransaction.commit()
     }
     
-    func timersUp() {
-        closeHand(duration: 3) {
+    func growSoccerIncrementally() {
+        
+        _soccerBallScale += kSoccerGrowIncrement
+        _soccerBall.scale = SCNVector3Make(_soccerBallScale, _soccerBallScale, _soccerBallScale)
+        
+        if _soccerBallScale >= 1 {
+            _soccerTimer.invalidate()
+            _soccerTimer = nil
+            _soccerBallScale = 0.001
+        }
+    }
+    
+    
+    func openCloseHand() {
+        graspHand(duration: 3) {
             self.resetHandPosture(duration: 2, completion: nil)
         }
     }
